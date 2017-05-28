@@ -8,4 +8,4 @@
 - python3 NovelSpider.py
 
 ## 附录
-- https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.htm
+- https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html
