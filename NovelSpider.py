@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 import urllib.request
 import re
 import os
+import ssl
 
 # 解析页面
 class Page:
@@ -14,8 +15,9 @@ class Page:
         self.dic = self.__getDic(url)
     # 获取结构体
     def __getDic(self, url):
-        html = urllib.request.urlopen(url).read()
-        soup = BeautifulSoup(html ,'lxml')
+        context = ssl._create_unverified_context()
+        html = urllib.request.urlopen(url, context=context).read()
+        soup = BeautifulSoup(html ,'html.parser')
         body = soup.body
         while(True):
             temp = body
@@ -84,7 +86,7 @@ class File (threading.Thread):
 
 if __name__ == '__main__':
     # 第一章地址
-    url = 'http://www.23us.com/html/7/7694/2186395.html'
+    url = 'https://www.520tingshu.com/book/28979/10385121.html'
     url_queue = queue.Queue()
     data_queue = queue.Queue()
     url_queue.put(url);
